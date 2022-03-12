@@ -28,6 +28,6 @@ class AdminNavigation extends Component
             }
         }
 
-        return view('livewire.side-panel', ['nav_items' => $nav_items]);
+        return view('admin.livewire.side-panel', ['nav_items' => $nav_items]);
     }
 }

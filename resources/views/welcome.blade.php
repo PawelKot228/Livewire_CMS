@@ -1,6 +1,9 @@
-@extends('_layout.default')
+@extends('admin._layout.default')
 
 @section('content')
+    @include('admin._layout._admin-header', ['title' => 'titleeee'])
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">

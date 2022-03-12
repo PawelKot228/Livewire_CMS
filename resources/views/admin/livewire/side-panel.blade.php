@@ -21,7 +21,7 @@
         </div>
     </div>
     <nav class="mt-2">
-        @include('_layout.admin-navigation', ['nav_items' => $nav_items])
+        @include('admin._layout.admin-navigation', ['nav_items' => $nav_items])
     </nav>
 </div>
 
