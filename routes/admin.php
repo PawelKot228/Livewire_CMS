@@ -9,10 +9,11 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::match(['post', 'get'], '/login', 'login')->name('login');
     Route::match(['post', 'get'], '/register', 'register')->name('register');
     Route::match(['post', 'get'], '/forgot-password', 'forgot')->name('forgot-password');
+    Route::match(['post', 'get'], '/log-out', 'logout')->name('log-out');
 });
 
 
-Route::middleware('guest:admin')->group(function () {
+Route::group(['middleware' => 'auth.admin'], static function () {
     Route::match(['post', 'get'], '/index', [IndexController::class, 'index'])->name('index');
     Route::match(['post', 'get'], '/constant', [ConstantController::class, 'index'])->name('constant.index');
 });

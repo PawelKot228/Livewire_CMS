@@ -4,23 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Session;
 
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:web')->except('logout');
-    }
-
     public function login()
     {
         if (request()->isMethod('POST')) {
             $post = request()->input('formdata', []);
+            $remember_me = (bool)request()->input('remember', false);
 
-            if (Auth::guard('admin')->attempt($post)) {
-                //dd(Auth::guard('admin')->user());
+            if (Auth::guard('admin')->attempt($post, $remember_me)) {
                 return redirect()->intended('/admin/index');
             }
         }
@@ -40,6 +34,9 @@ class AuthController extends Controller
 
     public function logout()
     {
+        Session::flush();
+        Auth::guard('admin')->logout();
 
+        return to_route('admin.auth.login');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Auth;
 use Livewire\Component;
 
 class AdminNavigation extends Component
@@ -28,6 +29,9 @@ class AdminNavigation extends Component
             }
         }
 
-        return view('admin.livewire.side-panel', ['nav_items' => $nav_items]);
+        return view('admin.livewire.side-panel', [
+                'nav_items' => $nav_items,
+                'user' => Auth::guard('admin')->user(),
+            ]);
     }
 }

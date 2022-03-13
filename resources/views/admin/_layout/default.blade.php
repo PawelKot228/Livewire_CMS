@@ -27,11 +27,14 @@
     <script>
         const csrf_token = "{{csrf_token()}}";
     </script>
+    @php
+        $user = Auth::guard('admin')->user();
+    @endphp
 
     @livewireStyles
     @stack('css')
 </head>
-<body class="{{Session::get('dark_mode', true) ? 'dark-mode' : ''}} ">
+<body class="{{$user->hasDarkMode() ? 'dark-mode' : ''}} ">
 <div class="wrapper">
 
     <!-- Navbar -->
@@ -50,72 +53,75 @@
     {{--        </ul>--}}
 
     <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+        <ul class="navbar-nav ml-auto d-flex align-items-center">
+            <li class="nav-item mr-3">
                 <div class="dark-mode-switch">
-                    <input type="checkbox" checked data-toggle="toggle" data-size="sm" id="dark-mode-switch"
-                           data-on="<i class='fa-solid fa-sun fa-fw'></i>" data-off="<i class='fa-solid fa-moon fa-fw'></i>"
-                           data-onstyle="dark" data-offstyle="light" data-style="border">
+                    <input type="checkbox" data-toggle="toggle" data-size="sm" id="dark-mode-switch"
+                           data-on="<i class='fa-solid fa-moon fa-fw'></i>" data-off="<i class='fa-solid fa-sun fa-fw'></i>"
+                           data-onstyle="dark" data-offstyle="light" data-style="border" {{$user->hasDarkMode() ? 'checked' : ''}}>
                 </div>
             </li>
 
 
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
+{{--                    <i class="far fa-comments"></i>--}}
+{{--                    <span class="badge badge-danger navbar-badge">3</span>--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <!-- Message Start -->--}}
+{{--                        <div class="media">--}}
+{{--                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">--}}
+{{--                            <div class="media-body">--}}
+{{--                                <h3 class="dropdown-item-title">--}}
+{{--                                    Brad Diesel--}}
+{{--                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>--}}
+{{--                                </h3>--}}
+{{--                                <p class="text-sm">Call me whenever you can...</p>--}}
+{{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Message End -->--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <!-- Message Start -->--}}
+{{--                        <div class="media">--}}
+{{--                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+{{--                            <div class="media-body">--}}
+{{--                                <h3 class="dropdown-item-title">--}}
+{{--                                    John Pierce--}}
+{{--                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>--}}
+{{--                                </h3>--}}
+{{--                                <p class="text-sm">I got your message bro</p>--}}
+{{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Message End -->--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <!-- Message Start -->--}}
+{{--                        <div class="media">--}}
+{{--                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">--}}
+{{--                            <div class="media-body">--}}
+{{--                                <h3 class="dropdown-item-title">--}}
+{{--                                    Nora Silvester--}}
+{{--                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>--}}
+{{--                                </h3>--}}
+{{--                                <p class="text-sm">The subject goes here</p>--}}
+{{--                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Message End -->--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
+            <li class="nav-item">
+                <a href="{{route('admin.auth.log-out')}}" class="btn btn-danger" title="Log out"><i class="fa-solid fa-arrow-right-from-bracket fa-fw"></i></a>
             </li>
 
         </ul>
@@ -125,14 +131,14 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="{{route('admin.index')}}" class="brand-link">
 {{--            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"--}}
 {{--                 style="opacity: .8">--}}
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>
 
         <!-- Sidebar -->
-            <livewire:admin-navigation />
+        <livewire:admin-navigation/>
 
 
         <!-- /.sidebar -->
@@ -149,10 +155,10 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            <small>Currently using Laravel v{{App::VERSION()}}</small>
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        &nbsp;
     </footer>
 </div>
 
@@ -173,7 +179,7 @@
             url: "{{route('admin.api.dark-mode')}}",
             data: {
                 '_token': csrf_token,
-                'dark_mode': this.checked,
+                'dark_mode': Number(this.checked),
             },
         }).done(data => {
             console.log(data)
@@ -184,6 +190,7 @@
         })
         console.log(this.checked);
     })
+
 </script>
 </body>
 </html>

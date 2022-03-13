@@ -12,11 +12,12 @@ class CreateAdminTable extends Migration
         Schema::create('admin', function (Blueprint $table) {
             $table->id('id_admin');
             $table->string('email', 255)->unique();
-            $table->string('login', 255);
+            $table->string('login', 255)->unique();
             $table->string('given_name', 255);
             $table->string('family_name', 255);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
+            $table->tinyInteger('dark_mode')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

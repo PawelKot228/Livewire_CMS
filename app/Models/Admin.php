@@ -15,4 +15,9 @@ class Admin extends Authenticatable
       'password',
       'remember_token',
     ];
+
+    public function hasDarkMode()
+    {
+        return (bool)$this->dark_mode;
+    }
 }
