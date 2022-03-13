@@ -10,6 +10,9 @@
             <p class="login-box-msg">Sign in to start your session</p>
             <form action="{{route('admin.auth.login')}}" method="post">
                 @csrf
+{{--@dd($form)--}}
+                {!! $form->renderFormElement('login') !!}
+                {!! $form->renderFormElement('password') !!}
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="@lang('admin.label.login')" name="formdata[login]">
                     <div class="input-group-append">

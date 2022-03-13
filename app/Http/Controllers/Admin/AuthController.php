@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Form\Admin\LoginForm;
 use App\Http\Controllers\Controller;
 use Auth;
 use Session;
@@ -10,6 +11,8 @@ class AuthController extends Controller
 {
     public function login()
     {
+        $form = new LoginForm();
+
         if (request()->isMethod('POST')) {
             $post = request()->input('formdata', []);
             $remember_me = (bool)request()->input('remember', false);
@@ -19,7 +22,7 @@ class AuthController extends Controller
             }
         }
 
-        return view('admin.auth.login');
+        return view('admin.auth.login', ['form' => $form]);
     }
 
     public function register()
