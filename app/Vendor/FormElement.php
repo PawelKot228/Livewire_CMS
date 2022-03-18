@@ -4,23 +4,25 @@ namespace App\Vendor;
 
 class FormElement
 {
+    public $name = '';
+    public $validation = '';
+    public $value = null;
+
     private $types = ['text', 'password'];
 
     private $type = '';
     private $group = '';
-    private $name = '';
     private $id = '';
+    private $form_wrap_class = 'form-data';
     private $class = '';
     private $placeholder = '';
     private $icon = '';
 
-    private $value = null;
-    private $errors = [];
 
     private $label = '';
     private $label_class = '';
 
-    private $validation = '';
+    public $errors = [];
     private $options = [];
     private $data = [];
     private $attr = [];
@@ -75,29 +77,21 @@ class FormElement
             }
         }
 
+        $this->name = $name;
         $this->type = $type;
 
-        if (empty($this->name) && !in_array('name', $data, true)){
-            if (empty($this->group)){
-                $this->name = $name;
-            } else {
-                $el =  '[' . str_replace('.', '][', $name);
-                $el = rtrim($el, '[') . ']';
-                $this->name = $el;
-            }
-        }
 
-        if (empty($this->placeholder) && !in_array('placeholder', $data, true)){
+        if (empty($this->placeholder) && !in_array('placeholder', $data, true)) {
             $this->placeholder = $this->label;
         }
 
-        if (empty($this->id) && !in_array('id', $data, true)){
+        if (empty($this->id) && !in_array('id', $data, true)) {
             $default_name = implode('_', [$this->group, $data['name'] ?? $name]);
             $default_name = str_replace(".", '_', $default_name);
             $this->id = $default_name;
         }
 
-        if (empty($this->placeholder) && !in_array('placeholder', $data, true)){
+        if (empty($this->placeholder) && !in_array('placeholder', $data, true)) {
             $this->placeholder = $this->label;
         }
 
@@ -105,9 +99,11 @@ class FormElement
 
     public function renderFormElement()
     {
-        $html = '<div class="input-group">';
+        $html = "<div class='$this->form_wrap_class'>";
         $html .= $this->renderLabel();
         $html .= $this->renderElement();
+        $html .= $this->renderErrorElement();
+        //dd($this->errors);
 
         $html .= $this->renderAppendElement();
 
@@ -127,23 +123,36 @@ class FormElement
 
     public function renderTextElement()
     {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
 
-        $html = "<input type='text' class='$this->class' id='$this->id'  name='$this->name' placeholder='$this->placeholder'>";
+        $html = "<input type='text' class='$this->class $invalid' id='$this->id'  name='$name' placeholder='$this->placeholder'>";
 
         return $html;
     }
 
     public function renderAppendElement()
     {
+        if ($this->errors || $this->form_wrap_class !== 'input-group'){
+            return '';
+        }
 
+        return '<div class="input-group-append"><div class="input-group-text">' . $this->icon . '</div></div>';
 
-        return '<div class="input-group-append"><div class="input-group-text">'. $this->icon .'</div></div>';
+    }
 
+    public function renderErrorElement()
+    {
+        $html = '';
+        foreach ($this->errors as $error){
+            $html .= "<span id='$this->id-error' class='error invalid-feedback'>$error</span>";
+        }
+        return $html;
     }
 
     public function renderLabel()
     {
-        if (empty($this->label)){
+        if (empty($this->label)) {
             return '';
         }
 
@@ -157,4 +166,17 @@ class FormElement
 
         return "<label $for $class>$this->label</label>";
     }
+
+    private function generateFormName()
+    {
+        if (empty($this->group)) {
+            return $this->name;
+        }
+
+        $el = '[' . str_replace('.', '][', $this->name);
+        $el = rtrim($el, '[') . ']';
+        return $this->group . $el;
+
+    }
+
 }

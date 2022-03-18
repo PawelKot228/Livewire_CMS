@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ConstantController;
 use App\Http\Controllers\Admin\IndexController;
 
+
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::match(['post', 'get'], '/login', 'login')->name('login');
     Route::match(['post', 'get'], '/register', 'register')->name('register');
@@ -18,3 +19,5 @@ Route::group(['middleware' => 'auth.admin'], static function () {
     Route::match(['post', 'get'], '/constant', [ConstantController::class, 'index'])->name('constant.index');
 });
 
+//Redirect to index if url does not exist
+Route::any('/{query}', [IndexController::class, 'redirect']);

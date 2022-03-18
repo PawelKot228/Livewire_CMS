@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Form\Admin\LoginForm;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\ViewErrorBag;
 use Session;
 
 class AuthController extends Controller
@@ -14,14 +15,23 @@ class AuthController extends Controller
         $form = new LoginForm();
 
         if (request()->isMethod('POST')) {
-            $post = request()->input('formdata', []);
+            $post = request()->get('formdata', []);
+
             $remember_me = (bool)request()->input('remember', false);
-
-            if (Auth::guard('admin')->attempt($post, $remember_me)) {
-                return redirect()->intended('/admin/index');
+//dd($form->validate($post));
+            if ($form->validate($post)){
+                if (Auth::guard('admin')->attempt($post, $remember_me)) {
+                    return redirect()->intended('/admin/index');
+                }
             }
-        }
 
+            return to_route('admin.auth.login')->withErrors($form->errors);
+
+
+
+        }
+            //$form->fillElements($post);
+//dd($form);
         return view('admin.auth.login', ['form' => $form]);
     }
 
