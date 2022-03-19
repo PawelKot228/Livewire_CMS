@@ -2,6 +2,7 @@
 
 namespace App\Vendor;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ViewErrorBag;
 use Validator;
 
@@ -40,14 +41,26 @@ abstract class Form
         return null;
     }
 
+    /**
+     * @param Model|array $post
+     * @return void
+     */
     public function fillElements($post)
     {
         /**
          * @var ViewErrorBag $errors
          */
 
+        if (is_object($post)) {
+            $post = $post->toArray();
+        }
+
         foreach ($post as $key => $val) {
-            $this->form_elements[$key]->value = $val;
+
+            if (array_key_exists($key, $this->form_elements)) {
+                $this->form_elements[$key]->value = $val;
+            }
+
         }
 
     }

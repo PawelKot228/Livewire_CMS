@@ -11,11 +11,11 @@ class CreateArticleTable extends Migration
     {
         Schema::create('article', function (Blueprint $table) {
             $table->id('id_article');
-            $table->unsignedBigInteger('id_article_category');
+            $table->unsignedBigInteger('id_article_category')->nullable();
             $table->string('article_title', 255);
-            $table->text('article_lead');
-            $table->text('article_text');
-            $table->dateTime('article_publication');
+            $table->text('article_lead')->nullable();
+            $table->text('article_text')->nullable();
+            $table->dateTime('article_publication')->nullable();
             $table->tinyInteger('status')->default(1)->nullable(false);
             $table->timestamps();
         });

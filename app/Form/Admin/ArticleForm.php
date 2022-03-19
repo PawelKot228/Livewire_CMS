@@ -11,24 +11,30 @@ class ArticleForm extends Form
         parent::__construct();
 
         $this->createFormElement('article_title', 'text', [
-            'label' => __('admin.label.company_name'),
+            'label' => __('admin.label.title'),
             'class' => 'form-control',
             'validation' => 'max:255',
             'group' => 'formdata',
         ]);
 
         $this->createFormElement('article_lead', 'text', [
-            'label' => __('admin.label.company_address'),
-            //'icon' => '<span class="fas fa-lock"></span>',
+            'label' => __('admin.label.lead'),
             'class' => 'form-control',
             'validation' => 'max:255',
             'group' => 'formdata',
         ]);
 
         $this->createFormElement('article_text', 'textarea', [
-            'label' => __('admin.label.company_address'),
+            'label' => __('admin.label.text'),
             'class' => 'form-control',
             'validation' => 'max:512',
+            'group' => 'formdata',
+        ]);
+
+        $this->createFormElement('status', 'checkbox', [
+            'label' => __('admin.label.status'),
+            'class' => 'form-check-input',
+            'validation' => 'max:255',
             'group' => 'formdata',
         ]);
     }

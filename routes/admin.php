@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth.admin'], static function () {
         ->prefix('article-category')->name('article-category.')
         ->group(function () {
             Route::get('/index', 'index')->name('index');
-            Route::get('/edit/{id?}', 'edit')->name('edit');
+            Route::match(['post', 'get'], '/edit/{id?}', 'edit')->name('edit');
             Route::get('/delete/{id}', 'delete')->name('delete');
         });
 
@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth.admin'], static function () {
         ->prefix('article')->name('article.')
         ->group(function () {
             Route::get('/index', 'index')->name('index');
-            Route::get('/edit/{id?}', 'edit')->name('edit');
+            Route::match(['post', 'get'],'/edit/{id?}', 'edit')->name('edit');
             Route::get('/delete/{id}', 'delete')->name('delete');
         });
 

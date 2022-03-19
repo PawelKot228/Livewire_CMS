@@ -1,5 +1,19 @@
 @extends('admin._layout.default')
 
 @section('content')
-    @include('admin._layout._admin-header', ['title' => __('admin.nav.article')])
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">@lang('admin.nav.article')</h1>
+                    <div class="card-tools">
+                        <a class="btn btn-primary" href="{{route('admin.article.edit')}}">
+                            @lang('admin.label.new')
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

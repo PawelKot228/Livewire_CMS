@@ -20,11 +20,14 @@ class AuthController extends Controller
 
             if ($form->validate($post)) {
                 if (Auth::guard('admin')->attempt($post, $remember_me)) {
-                    session()->flash('toast', [__('admin.toast.successfully_logged')]);
+                    session()->flash('success', [__('admin.toast.successfully_logged')]);
                     return redirect()->intended('/admin/index');
                 }
 
-                session()->flash('toast', [__('admin.toast.credentials_not_match')]);
+                session()->flash('error', [__('admin.toast.credentials_not_match')]);
+            } else {
+
+                session()->flash('error', [__('admin.toast.form.validation_fail')]);
             }
 
             return to_route('admin.auth.login')->withErrors($form->errors);

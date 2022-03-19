@@ -13,7 +13,7 @@ class FormElement
     private $type = '';
     private $group = '';
     private $id = '';
-    private $form_wrap_class = 'form-data';
+    private $form_wrap_class = null;
     private $class = '';
     private $placeholder = '';
     private $icon = '';
@@ -97,17 +97,37 @@ class FormElement
             $this->placeholder = $this->label;
         }
 
+        if (!$this->form_wrap_class){
+            if ($type === 'checkbox'){
+                $this->form_wrap_class = 'form-check';
+                $this->label_class = 'form-check-label';
+            } else {
+                $this->form_wrap_class = 'form-group';
+            }
+        }
     }
 
     public function renderFormElement()
     {
         $html = "<div class='$this->form_wrap_class'>";
-        $html .= $this->renderLabel();
-        $html .= $this->renderElement();
-        $html .= $this->renderErrorElement();
-        //dd($this->errors);
 
-        $html .= $this->renderAppendElement();
+
+
+            if ($this->type == 'checkbox'){
+                $html .= $this->renderElement();
+                $html .= $this->renderLabel();
+                $html .= $this->renderErrorElement();
+
+            } else {
+                $html .= $this->renderLabel();
+                $html .= $this->renderElement();
+                $html .= $this->renderErrorElement();
+                //dd($this->errors);
+
+                $html .= $this->renderAppendElement();
+            }
+
+
 
         $html .= '</div>';
 
@@ -146,7 +166,7 @@ class FormElement
             ? "for='$this->id'"
             : '';
 
-        $class = empty($this->label_class)
+        $class = !empty($this->label_class)
             ? "class='$this->label_class'"
             : '';
 
@@ -175,7 +195,11 @@ class FormElement
                 return $this->renderPasswordElement();
             case 'textarea':
                 return $this->renderTextareaElement();
+            case 'checkbox':
+                return $this->renderCheckboxElement();
         }
+
+        return '';
     }
 
     public function renderTextElement()
@@ -208,6 +232,19 @@ class FormElement
         $html = "<textarea type='text' class='$this->class $invalid' id='$this->id'"
             . "name='$name' placeholder='$this->placeholder'>"
         . $this->value . "</textarea>";
+
+        return $html;
+    }
+
+    public function renderCheckboxElement()
+    {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
+
+        $value = $this->value > 0
+            ? 'checked' : '';
+
+        $html = "<input type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' value='1' $value>";
 
         return $html;
     }

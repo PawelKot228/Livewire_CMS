@@ -18,6 +18,7 @@ return [
     'label' => [
         'remember-me' => 'Remember Me',
         'sign-in' => 'Sign In',
+        'new' => 'New',
         'save' => 'Save',
         'save-and-exit' => 'Save & Exit',
         'exit' => 'Exit',
@@ -28,13 +29,19 @@ return [
         'reset-password' => 'Reset password',
         'company_name' => 'Company name',
         'company_address' => 'Company address',
+
+
+        'title' => 'Title',
+        'lead' => 'Lead',
+        'text' => 'Text',
+        'status' => 'Status',
     ],
     'toast' => [
         'form' => [
-            'saved' => 'Forms successfully saved',
-            'validation_fail' => 'Forms successfully saved',
+            'saved' => 'Form successfully saved',
+            'validation_fail' => 'Form validation error',
         ],
-        'credentials_not_match' => 'The credentials do not match',
+        'credentials_not_match' => 'Credentials do not match',
         'successfully_logged' => 'Successfully logged in!',
     ],
 ];
