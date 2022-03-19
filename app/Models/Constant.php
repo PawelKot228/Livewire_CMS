@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Constant extends Authenticatable
+class Constant extends Model
 {
     protected $table = 'constant';
     protected $primaryKey = 'id_constant';

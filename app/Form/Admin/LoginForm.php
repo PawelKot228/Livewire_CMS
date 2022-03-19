@@ -19,7 +19,7 @@ class LoginForm extends Form
             'group' => 'formdata',
         ]);
 
-        $this->createFormElement('password', 'text', [
+        $this->createFormElement('password', 'password', [
             'label' => '',
             'placeholder' => __('admin.label.password'),
             //'icon' => '<span class="fas fa-lock"></span>',

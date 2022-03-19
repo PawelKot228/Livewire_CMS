@@ -5,6 +5,8 @@ return [
         'dashboard' => 'Dashboard',
         'features' => 'Features',
         'constant' => 'Constant',
+        'article' => 'Article',
+        'article-category' => 'Article category',
     ],
     'api' => [
         'response' => [

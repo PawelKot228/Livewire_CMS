@@ -171,6 +171,8 @@ class FormElement
         switch ($this->type) {
             case 'text':
                 return $this->renderTextElement();
+            case 'password':
+                return $this->renderPasswordElement();
             case 'textarea':
                 return $this->renderTextareaElement();
         }
@@ -182,6 +184,17 @@ class FormElement
         $invalid = $this->errors ? 'is-invalid' : '';
 
         $html = "<input type='text' class='$this->class $invalid' id='$this->id'"
+            . "name='$name' placeholder='$this->placeholder' value='$this->value'>";
+
+        return $html;
+    }
+
+    public function renderPasswordElement()
+    {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
+
+        $html = "<input type='password' class='$this->class $invalid' id='$this->id'"
             . "name='$name' placeholder='$this->placeholder' value='$this->value'>";
 
         return $html;
