@@ -22,6 +22,7 @@ return [
         'label' => 'admin.nav.features',
         'submenu' => [
             [
+        'icon' => 'far fa-circle nav-icon',
                 'label' => 'admin.nav.constant',
                 'route' => 'admin.constant.index',
             ],

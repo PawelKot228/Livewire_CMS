@@ -30,6 +30,9 @@ class FormElement
 
     public function __construct($name, $type, $data)
     {
+        $this->type = $type;
+        $this->name = $name;
+
         foreach ($data as $key => $val) {
             switch ($key) {
                 case 'group':
@@ -49,6 +52,9 @@ class FormElement
                     break;
                 case 'icon':
                     $this->icon = $val;
+                    break;
+                case '$orm_wrap_class':
+                    $this->form_wrap_class = $val;
                     break;
                 case 'value':
                     $this->value = $val;
@@ -76,10 +82,6 @@ class FormElement
                     break;
             }
         }
-
-        $this->name = $name;
-        $this->type = $type;
-
 
         if (empty($this->placeholder) && !in_array('placeholder', $data, true)) {
             $this->placeholder = $this->label;
@@ -113,23 +115,7 @@ class FormElement
     }
 
 
-    public function renderElement()
-    {
-        switch ($this->type) {
-            case 'text':
-                return $this->renderTextElement();
-        }
-    }
 
-    public function renderTextElement()
-    {
-        $name = $this->generateFormName();
-        $invalid = $this->errors ? 'is-invalid' : '';
-
-        $html = "<input type='text' class='$this->class $invalid' id='$this->id'  name='$name' placeholder='$this->placeholder'>";
-
-        return $html;
-    }
 
     public function renderAppendElement()
     {
@@ -177,6 +163,40 @@ class FormElement
         $el = rtrim($el, '[') . ']';
         return $this->group . $el;
 
+    }
+
+
+    public function renderElement()
+    {
+        switch ($this->type) {
+            case 'text':
+                return $this->renderTextElement();
+            case 'textarea':
+                return $this->renderTextareaElement();
+        }
+    }
+
+    public function renderTextElement()
+    {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
+
+        $html = "<input type='text' class='$this->class $invalid' id='$this->id'"
+            . "name='$name' placeholder='$this->placeholder' value='$this->value'>";
+
+        return $html;
+    }
+
+    public function renderTextareaElement()
+    {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
+
+        $html = "<textarea type='text' class='$this->class $invalid' id='$this->id'"
+            . "name='$name' placeholder='$this->placeholder'>"
+        . $this->value . "</textarea>";
+
+        return $html;
     }
 
 }

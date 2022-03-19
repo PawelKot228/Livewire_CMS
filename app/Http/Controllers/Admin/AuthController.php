@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Form\Admin\LoginForm;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Support\ViewErrorBag;
 use Session;
 
 class AuthController extends Controller
@@ -18,20 +17,20 @@ class AuthController extends Controller
             $post = request()->get('formdata', []);
 
             $remember_me = (bool)request()->input('remember', false);
-//dd($form->validate($post));
-            if ($form->validate($post)){
+
+            if ($form->validate($post)) {
                 if (Auth::guard('admin')->attempt($post, $remember_me)) {
+                    session()->flash('toast', [__('admin.toast.successfully_logged')]);
                     return redirect()->intended('/admin/index');
                 }
+
+                session()->flash('toast', [__('admin.toast.credentials_not_match')]);
             }
 
             return to_route('admin.auth.login')->withErrors($form->errors);
 
-
-
         }
-            //$form->fillElements($post);
-//dd($form);
+
         return view('admin.auth.login', ['form' => $form]);
     }
 

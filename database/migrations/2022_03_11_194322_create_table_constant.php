@@ -12,6 +12,7 @@ class CreateTableConstant extends Migration
             $table->id('id_constant');
             $table->string('constant_label', 255);
             $table->text('constant_text');
+            $table->string('lang', 32);
             $table->timestamps();
         });
     }
