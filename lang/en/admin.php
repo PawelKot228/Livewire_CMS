@@ -31,10 +31,14 @@ return [
         'company_address' => 'Company address',
 
 
+        'all' => 'All',
+        'none' => 'None',
+
         'delete' => 'Delete',
         'edit' => 'Edit',
         'show' => 'Show',
 
+        'category' => 'Category',
         'title' => 'Title',
         'lead' => 'Lead',
         'text' => 'Text',

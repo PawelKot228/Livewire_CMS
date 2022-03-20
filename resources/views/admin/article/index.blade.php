@@ -3,16 +3,11 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="card">
-                <div class="card-header">
-                    <h1 class="card-title">@lang('admin.nav.article')</h1>
-                    <div class="card-tools">
-                        <a class="btn btn-primary" href="{{route('admin.article.edit')}}">
-                            @lang('admin.label.new')
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @include('admin._layout._admin-header', [
+              'title' => __('admin.nav.article'),
+              'new' => route('admin.article.edit'),
+            ])
+
             <div class="card">
                 <div class="card-body">
                     {{ $dataTable->table() }}

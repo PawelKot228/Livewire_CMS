@@ -53,7 +53,7 @@ class FormElement
                 case 'icon':
                     $this->icon = $val;
                     break;
-                case '$orm_wrap_class':
+                case 'form_wrap_class':
                     $this->form_wrap_class = $val;
                     break;
                 case 'value':
@@ -197,6 +197,8 @@ class FormElement
                 return $this->renderTextareaElement();
             case 'checkbox':
                 return $this->renderCheckboxElement();
+            case 'select':
+                return $this->renderSelectElement();
         }
 
         return '';
@@ -246,6 +248,24 @@ class FormElement
 
         $html = "<input type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' value='1' $value>";
 
+        return $html;
+    }
+
+    public function renderSelectElement()
+    {
+        $name = $this->generateFormName();
+        $invalid = $this->errors ? 'is-invalid' : '';
+
+        $html = "<select type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' >";
+
+        foreach ($this->options as $key => $val){
+            $selected = $key === $this->value
+                ? 'selected' : '';
+
+            $html .= "<option value='$key' $selected>$val</option>";
+        }
+
+        $html .= "</select>";
         return $html;
     }
 

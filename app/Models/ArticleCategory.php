@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticleCategory extends Model
 {
-    protected $table = 'article';
-    protected $primaryKey = 'id_article';
-    protected $guarded = ['id_article'];
+    protected $table = 'article_category';
+    protected $primaryKey = 'id_article_category';
+    protected $guarded = ['id_article_category'];
 
     public function articles()
     {

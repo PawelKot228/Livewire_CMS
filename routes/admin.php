@@ -43,7 +43,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::prefix('api')->name('api.')->group(function () {
         Route::post('/dark-mode', [IndexController::class, 'darkMode'])->name('dark-mode');
-
     });
 
 

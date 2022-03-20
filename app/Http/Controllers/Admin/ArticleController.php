@@ -14,7 +14,7 @@ class ArticleController extends Controller
         $dataTable = new ArticleDataTable();
 
         if (request()->ajax()){
-            $db = Article::with([]);
+            $db = Article::with(['category']);
 
             return $dataTable->dataTable($db)->toJson();
         }
@@ -29,10 +29,15 @@ class ArticleController extends Controller
 
         if (request()->isMethod('post')) {
             $post = request()->get('formdata', []);
+            $exit = request()->input('exit', 0);
 
             if ($form->validate($post)) {
                 $obj->fill($post)->save();
                 session()->flash('success', [__('admin.toast.form.saved')]);
+
+                if ($exit) {
+                    return to_route('admin.article.index');
+                }
             } else {
                 session()->flash('danger', [__('admin.toast.form.validation_fail')]);
             }

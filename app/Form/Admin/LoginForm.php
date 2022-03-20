@@ -23,7 +23,7 @@ class LoginForm extends Form
             'label' => '',
             'placeholder' => __('admin.label.password'),
             //'icon' => '<span class="fas fa-lock"></span>',
-            'class' => 'form-control mt-2',
+            'class' => 'form-control',
             'validation' => 'required|min:4',
             'group' => 'formdata',
         ]);

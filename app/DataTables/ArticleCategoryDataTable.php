@@ -2,20 +2,18 @@
 
 namespace App\DataTables;
 
-use App\Models\Article;
-use Illuminate\Database\Eloquent\Builder;
-use Yajra\DataTables\DataTableAbstract;
+use App\Models\ArticleCategory;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class ArticleDataTable extends DataTable
+class ArticleCategoryDataTable extends DataTable
 {
     /**
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return DataTableAbstract
+     * @return \Yajra\DataTables\DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -23,22 +21,22 @@ class ArticleDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function ($item) {
                 return view('admin._datatables.actions', [
-                    'edit' => route('admin.article.edit', ['id' => $item->getKey()]),
-                    'delete' => route('admin.article.delete', ['id' => $item->getKey()]),
+                    'edit' => route('admin.article-category.edit', ['id' => $item->getKey()]),
+                    'delete' => route('admin.article-category.delete', ['id' => $item->getKey()]),
                 ]);
             })
             ->addColumn('article_category_title', function ($item) {
-                return $item->category ? $item->category->article_category_title : '';
+                return $item->article_category_title;
             });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param Article $model
-     * @return Builder
+     * @param \App\Models\ArticleCategory $model
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Article $model)
+    public function query(ArticleCategory $model)
     {
         return $model->newQuery();
     }
@@ -51,7 +49,7 @@ class ArticleDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('article-table')
+            ->setTableId('articlecategory-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
@@ -73,19 +71,17 @@ class ArticleDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id_article')
+            Column::make('id_article_category')
                 ->title('#')
                 ->width('50px'),
-            Column::make('article_category_title')
-                ->title(__('admin.label.category'))
-                ->width('200px'),
-            Column::make('article_title'),
-            Column::make('status'),
+            Column::make('article_category_title'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
+            //Column::make('created_at'),
+            //Column::make('updated_at'),
         ];
     }
 
@@ -96,6 +92,6 @@ class ArticleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Article_' . date('YmdHis');
+        return 'ArticleCategory_' . date('YmdHis');
     }
 }
