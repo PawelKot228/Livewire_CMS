@@ -9,21 +9,13 @@
     <link rel="stylesheet" href="{{asset('admin/css/vendors/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/vendors/bootstrap4-toggle.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.css"/>--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 
-        .dark-mode-switch .toggle-on, .dark-mode-switch .toggle-off {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5em;
-        }
-    </style>
     <script>
         const csrf_token = "{{csrf_token()}}";
     </script>
@@ -171,6 +163,7 @@
 
 <script src="{{asset('admin/js/vendors/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('admin/js/vendors/adminlte.min.js')}}"></script>
+<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{asset('admin/js/vendors/bootstrap4-toggle.min.js')}}"></script>
 <script src="{{asset('admin/js/main.js')}}"></script>

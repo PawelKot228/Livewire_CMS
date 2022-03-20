@@ -31,6 +31,10 @@ return [
         'company_address' => 'Company address',
 
 
+        'delete' => 'Delete',
+        'edit' => 'Edit',
+        'show' => 'Show',
+
         'title' => 'Title',
         'lead' => 'Lead',
         'text' => 'Text',

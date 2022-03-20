@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ArticleDataTable;
 use App\Form\Admin\ArticleForm;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -10,8 +11,15 @@ class ArticleController extends Controller
 {
     public function index()
     {
+        $dataTable = new ArticleDataTable();
 
-        return view('admin.article.index');
+        if (request()->ajax()){
+            $db = Article::with([]);
+
+            return $dataTable->dataTable($db)->toJson();
+        }
+
+        return $dataTable->render('admin.article.index');
     }
 
     public function edit($id = 0)

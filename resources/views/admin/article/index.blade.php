@@ -13,7 +13,17 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    {{ $dataTable->table() }}
+                </div>
+            </div>
         </div>
     </div>
 
+
 @endsection
+
+@push('js')
+    {{ $dataTable->scripts() }}
+@endpush

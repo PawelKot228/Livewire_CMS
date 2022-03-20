@@ -1,0 +1,62 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.dark-mode-switch .toggle-on, .dark-mode-switch .toggle-off {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+table.dataTable tbody tr {
+    background-color: transparent;
+}
+
+.dataTables_wrapper .dataTables_processing {
+    display: none !important;
+    //background: #00000022;
+}
+
+
+.dark-mode .card {
+    color: #fff !important;
+}
+
+
+.dark-mode {
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+
+        &.disabled, &.disabled:hover, &.disabled:active {
+            color: #878787 !important;
+        }
+
+    }
+
+
+    .dataTables_paginate {
+        color: #faa;
+
+
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+    }
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .25em;
+}
+
+.table.dataTable{
+    width: 100% !important;
+}
