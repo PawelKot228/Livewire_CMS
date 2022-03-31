@@ -3,6 +3,8 @@
 namespace App\Form\Admin;
 
 use App\Vendor\Form;
+use App\Vendor\FormElements\FormTextareaElement;
+use App\Vendor\FormElements\FormTextElement;
 
 class ConstantForm extends Form
 {
@@ -10,27 +12,28 @@ class ConstantForm extends Form
     {
         parent::__construct();
 
-        $this->createFormElement('company_name', 'text', [
+        $this->append(new FormTextElement('company_name', [
             'label' => __('admin.label.company_name'),
             'class' => 'form-control',
             'validation' => 'max:255',
             'group' => 'formdata',
-        ]);
+        ]));
 
-        $this->createFormElement('company_address', 'text', [
+        $this->append(new FormTextElement('company_address', [
             'label' => __('admin.label.company_address'),
             //'icon' => '<span class="fas fa-lock"></span>',
             'class' => 'form-control',
             'validation' => 'max:255',
             'group' => 'formdata',
-        ]);
+        ]));
 
-        $this->createFormElement('company_description', 'textarea', [
-            'label' => __('admin.label.company_address'),
+        $this->append(new FormTextareaElement('company_description', [
+            'label' => __('admin.label.company_description'),
             'class' => 'form-control',
             'validation' => 'max:512',
             'group' => 'formdata',
-        ]);
+        ]));
+
     }
 
 

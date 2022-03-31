@@ -18,7 +18,6 @@
                         <div class="card">
                             <div class="card-header">
                                 {!! $form->renderFormElement('article_category_title') !!}
-                                {!! $form->renderFormElement('article_category_title') !!}
                                 {!! $form->renderFormElement('article_category_lead') !!}
                                 {!! $form->renderFormElement('article_category_text') !!}
                                 {!! $form->renderFormElement('status') !!}

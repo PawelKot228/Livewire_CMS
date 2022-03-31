@@ -29,6 +29,7 @@ return [
         'reset-password' => 'Reset password',
         'company_name' => 'Company name',
         'company_address' => 'Company address',
+        'company_description' => 'Company address',
 
 
         'all' => 'All',

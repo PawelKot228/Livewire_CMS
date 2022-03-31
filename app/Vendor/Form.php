@@ -24,9 +24,10 @@ abstract class Form
     }
 
 
-    public function createFormElement($name, $type, $data)
+    public function append(FormElement $element): void
     {
-        $this->form_elements[$name] = new FormElement($name, $type, $data);
+
+        $this->form_elements[$element->name] = $element;
     }
 
 
