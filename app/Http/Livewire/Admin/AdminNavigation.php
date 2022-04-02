@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use Auth;
 use Livewire\Component;
@@ -10,11 +10,6 @@ class AdminNavigation extends Component
     public $filter_word;
 
 
-    public function increment()
-    {
-        $this->count++;
-    }
-
     public function render()
     {
         $nav = collect(config('admin_nav'));
@@ -23,6 +18,7 @@ class AdminNavigation extends Component
         if ($this->filter_word){
             $nav_items = [];
             foreach ($nav as $nav_item){
+
                 if (str_contains(strtolower($nav_item['label']), strtolower($this->filter_word))){
                     $nav_items[] = $nav_item;
                 }
