@@ -40,6 +40,7 @@ return [
         'edit' => 'Edit',
         'show' => 'Show',
 
+        'basic-info' => 'Basic info',
         'category' => 'Category',
         'title' => 'Title',
         'description' => 'Description',

@@ -30,6 +30,11 @@ return [
                 'label' => 'admin.nav.constant',
                 'route' => 'admin.constant.index',
             ],
+            [
+                'icon' => 'far fa-circle nav-icon',
+                'label' => 'admin.nav.seo',
+                'route' => 'admin.seo.index',
+            ],
         ],
     ],
 ];

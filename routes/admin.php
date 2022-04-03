@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ConstantController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\SeoController;
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -32,6 +33,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::controller(ArticleController::class)
             ->prefix('article')->name('article.')
+            ->group(function () {
+                Route::get('/index', 'index')->name('index');
+                Route::match(['post', 'get'], '/edit/{id?}', 'edit')->name('edit');
+                Route::get('/delete/{id}', 'delete')->name('delete');
+            });
+
+        Route::controller(SeoController::class)
+            ->prefix('seo')->name('seo.')
             ->group(function () {
                 Route::get('/index', 'index')->name('index');
                 Route::match(['post', 'get'], '/edit/{id?}', 'edit')->name('edit');

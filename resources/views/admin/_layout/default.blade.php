@@ -140,7 +140,7 @@
     </div>
 
     <footer class="main-footer">
-            &nbsp;
+        &nbsp;
         <div class="float-right d-none d-sm-inline">
             <small>Currently using Laravel v{{App::VERSION()}}</small>
         </div>

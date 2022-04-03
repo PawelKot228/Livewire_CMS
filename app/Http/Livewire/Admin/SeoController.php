@@ -25,6 +25,8 @@ class SeoController extends Component
         $this->updateInputs();
     }
 
+    //TODO: fix seo inputs filling after save,
+    // rendering for some reason does not save updated seo data
     public function render()
     {
         $form = new SeoForm();
@@ -57,11 +59,11 @@ class SeoController extends Component
             $this->messages = ['success' => __('admin.toast.form.saved')];
             //dd('saved!!!');
 
-            $this->updateInputs();
         } else{
             $this->messages = ['danger' => __('admin.toast.form.validation_fail')];
         }
 
+            $this->updateInputs();
         $this->saved = true;
     }
 

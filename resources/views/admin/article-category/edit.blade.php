@@ -14,15 +14,19 @@
 
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6 col-xl-4">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header">{{__('admin.label.basic-info')}}</div>
+                            <div class="card-body">
                                 {!! $form->renderFormElement('article_category_title') !!}
                                 {!! $form->renderFormElement('article_category_lead') !!}
                                 {!! $form->renderFormElement('article_category_text') !!}
                                 {!! $form->renderFormElement('status') !!}
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <livewire:admin.seo :model="$obj" />
                     </div>
                 </div>
 
