@@ -77,8 +77,10 @@ class FormTextElement extends FormElement
         $name = $this->generateFormName();
         $invalid = $this->errors ? 'is-invalid' : '';
 
+        $attr = $this->attr();
+
         $html = "<input type='text' class='$this->class $invalid' id='$this->id'"
-            . "name='$name' placeholder='$this->placeholder' value='$this->value'>";
+            . "name='$name' placeholder='$this->placeholder' $attr value='$this->value'>";
 
         return $html;
     }

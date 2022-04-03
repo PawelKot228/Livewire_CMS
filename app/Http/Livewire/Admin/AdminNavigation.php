@@ -9,7 +9,6 @@ class AdminNavigation extends Component
 {
     public $filter_word;
 
-
     public function render()
     {
         $nav = collect(config('admin_nav'));

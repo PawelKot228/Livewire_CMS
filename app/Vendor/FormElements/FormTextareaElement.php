@@ -75,8 +75,10 @@ class FormTextareaElement extends FormElement
         $name = $this->generateFormName();
         $invalid = $this->errors ? 'is-invalid' : '';
 
+        $attr = $this->attr();
+
         $html = "<textarea type='text' class='$this->class $invalid' id='$this->id'"
-            . "name='$name' placeholder='$this->placeholder'>"
+            . "name='$name' placeholder='$this->placeholder' $attr>"
             . $this->value . "</textarea>";
 
         return $html;

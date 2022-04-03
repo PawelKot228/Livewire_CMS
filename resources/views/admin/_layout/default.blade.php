@@ -132,28 +132,20 @@
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>
 
-        <!-- Sidebar -->
-        <livewire:admin-navigation/>
+        <livewire:admin.admin-navigation/>
 
-
-        <!-- /.sidebar -->
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content">
             @yield('content')
         </div>
     </div>
 
-    <!-- Main Footer -->
     <footer class="main-footer">
-        <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
             <small>Currently using Laravel v{{App::VERSION()}}</small>
         </div>
-        <!-- Default to the left -->
-        &nbsp;
     </footer>
     @include('admin._layout._messages')
 </div>

@@ -18,6 +18,9 @@ class ArticleCategoryForm extends Form
             'class' => 'form-control',
             'validation' => 'max:255',
             'group' => 'formdata',
+            'attr' => [
+                ':model' => '$slug'
+            ]
         ]));
 
         $this->append(new FormTextareaElement('article_category_lead', [

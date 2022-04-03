@@ -77,7 +77,9 @@ class FormSelectElement extends FormElement
         $name = $this->generateFormName();
         $invalid = $this->errors ? 'is-invalid' : '';
 
-        $html = "<select type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' >";
+        $attr = $this->attr();
+
+        $html = "<select type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' $attr>";
 
         foreach ($this->options as $key => $val) {
             $selected = $key === $this->value

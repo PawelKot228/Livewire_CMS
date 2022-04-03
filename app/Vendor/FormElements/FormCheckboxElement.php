@@ -87,7 +87,9 @@ class FormCheckboxElement extends FormElement
         $value = $this->value > 0
             ? 'checked' : '';
 
-        $html = "<input type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' value='1' $value>";
+        $attr = $this->attr();
+
+        $html = "<input type='checkbox' class='$this->class $invalid' id='$this->id' name='$name' $attr value='1' $value>";
 
         return $html;
     }

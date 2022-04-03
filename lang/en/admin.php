@@ -7,6 +7,7 @@ return [
         'constant' => 'Constant',
         'article' => 'Article',
         'article-category' => 'Article category',
+        'seo' => 'Seo',
     ],
     'api' => [
         'response' => [
@@ -41,15 +42,22 @@ return [
 
         'category' => 'Category',
         'title' => 'Title',
+        'description' => 'Description',
+        'slug' => 'Url',
+        'keywords' => 'Keywords',
         'lead' => 'Lead',
         'text' => 'Text',
         'status' => 'Status',
+    ],
+    'alert' => [
+        'delete_prompt' => 'Are you sure you would like to delete this element?',
     ],
     'toast' => [
         'form' => [
             'saved' => 'Form successfully saved',
             'validation_fail' => 'Form validation error',
         ],
+        'deleted' => 'Successfully deleted',
         'credentials_not_match' => 'Credentials do not match',
         'successfully_logged' => 'Successfully logged in!',
     ],

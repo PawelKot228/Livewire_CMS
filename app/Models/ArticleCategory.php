@@ -16,4 +16,10 @@ class ArticleCategory extends Model
         return $this->hasMany(Article::class, 'id_article_category', 'id_article_category');
     }
 
+    public function seo()
+    {
+        return $this->belongsTo(Seo::class, $this->primaryKey, 'source_id')
+            ->where('source_table', $this->getTable());
+    }
+
 }

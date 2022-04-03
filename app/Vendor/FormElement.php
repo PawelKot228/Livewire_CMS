@@ -99,4 +99,15 @@ abstract class FormElement
 
     }
 
+    protected function attr()
+    {
+        $attr = [];
+
+        foreach ($this->attr as $key => $val){
+            $attr[] = "$key=\"$val\"";
+        }
+
+        return implode(' ', $attr);
+    }
+
 }
