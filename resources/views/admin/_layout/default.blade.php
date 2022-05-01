@@ -8,8 +8,10 @@
 
     <link rel="stylesheet" href="{{asset('admin/css/vendors/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/vendors/bootstrap4-toggle.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{asset('admin/plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+
+{{--    <link rel="stylesheet" href="http://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">--}}
 {{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.css"/>--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -153,8 +155,11 @@
 
 <script src="{{asset('admin/js/vendors/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('admin/js/vendors/adminlte.min.js')}}"></script>
-<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+{{--<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>--}}
+<script src="{{asset('admin/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+<script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>
 <script src="{{asset('admin/js/vendors/bootstrap4-toggle.min.js')}}"></script>
 <script src="{{asset('admin/js/main.js')}}"></script>
 
