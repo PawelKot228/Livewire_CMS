@@ -49,7 +49,7 @@ class FormTextElement extends FormElement
             return '';
         }
 
-        $for = empty($this->id)
+        $for = !empty($this->id)
             ? "for='$this->id'"
             : '';
 

@@ -16,6 +16,11 @@ class Admin extends Authenticatable
       'remember_token',
     ];
 
+    public function getFullname()
+    {
+        return "$this->given_name $this->family_name";
+    }
+
     public function hasDarkMode()
     {
         return (bool)$this->dark_mode;

@@ -47,7 +47,7 @@ class FormTextareaElement extends FormElement
             return '';
         }
 
-        $for = empty($this->id)
+        $for = !empty($this->id)
             ? "for='$this->id'"
             : '';
 

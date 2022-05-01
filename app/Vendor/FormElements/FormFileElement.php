@@ -4,14 +4,17 @@ namespace App\Vendor\FormElements;
 
 use App\Vendor\FormElement;
 
-class FormPasswordElement extends FormElement
+class FormFileElement extends FormElement
 {
+    protected $class = 'custom-file-input';
+    protected $label_class = 'custom-file-label';
+
     public function renderFormElement()
     {
         $html = "<div class='$this->form_wrap_class'>";
-
-
         $html .= $this->renderLabel();
+
+        $html .= "<div class='input-group'>";
         $html .= $this->renderElement();
         $html .= $this->renderErrorElement();
         //dd($this->errors);
@@ -19,7 +22,7 @@ class FormPasswordElement extends FormElement
         $html .= $this->renderAppendElement();
 
 
-        $html .= '</div>';
+        $html .= '</div></div>';
 
         return $html;
     }
@@ -57,7 +60,7 @@ class FormPasswordElement extends FormElement
             ? "class='$this->label_class'"
             : '';
 
-        return "<label $for $class>$this->label</label>";
+        return "<label $for>$this->label</label>";
     }
 
     private function generateFormName()
@@ -78,9 +81,17 @@ class FormPasswordElement extends FormElement
         $invalid = $this->errors ? 'is-invalid' : '';
 
         $attr = $this->attr();
-
-        $html = "<input type='password' class='$this->class $invalid' id='$this->id'"
+        $html = '<div class="custom-file">';
+        $html .= "<input type='file' class='$this->class $invalid' id='$this->id'"
             . "name='$name' placeholder='$this->placeholder' $attr value='$this->value'>";
+
+
+        $for = !empty($this->id)
+            ? "for='$this->id'"
+            : '';
+
+        $html .= "<label $for class='$this->label_class'>$this->placeholder</label>";
+        $html .= '</div>';
 
         return $html;
     }

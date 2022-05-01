@@ -44,6 +44,12 @@ return [
             'throw' => false,
         ],
 
+        'upload' => [
+            'driver' => 'local',
+            'root' => public_path('upload'),
+            'url' => env('APP_URL').'/upload',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

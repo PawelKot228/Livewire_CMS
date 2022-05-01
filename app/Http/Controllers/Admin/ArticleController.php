@@ -49,7 +49,11 @@ class ArticleController extends Controller
 
         $form->fillElements($obj);
 
-        return view('admin.article.edit', ['form' => $form, 'obj' => $obj]);
+        return view('admin.article.edit',
+            [
+                'form' => $form,
+                'obj' => $obj
+            ]);
     }
 
     public function delete()

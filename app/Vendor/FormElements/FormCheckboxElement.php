@@ -11,6 +11,7 @@ class FormCheckboxElement extends FormElement
         parent::__construct($name, $data);
 
         $this->form_wrap_class = 'form-check';
+        $this->class = 'form-check-input ';
     }
 
     public function renderFormElement()
@@ -56,7 +57,7 @@ class FormCheckboxElement extends FormElement
             return '';
         }
 
-        $for = empty($this->id)
+        $for = !empty($this->id)
             ? "for='$this->id'"
             : '';
 

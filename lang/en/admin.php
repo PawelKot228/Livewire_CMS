@@ -49,6 +49,8 @@ return [
         'lead' => 'Lead',
         'text' => 'Text',
         'status' => 'Status',
+        'submit' => 'Submit',
+        'cover' => 'Cover',
     ],
     'alert' => [
         'delete_prompt' => 'Are you sure you would like to delete this element?',

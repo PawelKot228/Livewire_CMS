@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <livewire:admin.seo :model="$obj" />
+                        <livewire:admin.seo-controller :model="$obj" />
                     </div>
                 </div>
 
@@ -35,5 +35,8 @@
     </form>
 
 
+    @if($obj->getKey())
+        <livewire:admin.gallery-item-controller :model="$obj" />
+    @endif
 
 @endsection

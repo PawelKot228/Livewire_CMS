@@ -56,5 +56,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     //Redirect to index if url does not exist
-    Route::any('/{query}', [IndexController::class, 'redirect']);
+    Route::any('{query}', [IndexController::class, 'redirect']);
 });
