@@ -1,10 +1,10 @@
 @extends('admin._layout.default')
 
 @section('content')
-    <form method="POST">
-        @csrf
-        <div class="content-header">
-            <div class="container-fluid">
+    <div class="content-header">
+        <div class="container-fluid">
+            <form method="POST">
+                @csrf
                 @include('admin._layout._admin-header', [
                     'title' => __('admin.nav.article'),
                     'save' => true,
@@ -28,18 +28,17 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
-                        <livewire:admin.seo-controller :model="$obj" />
+                        <livewire:admin.seo-controller :model="$obj"/>
                     </div>
                 </div>
 
-            </div>
+            </form>
+
+
+            @if($obj->getKey())
+                <livewire:admin.gallery-item-controller :model="$obj"/>
+            @endif
         </div>
-    </form>
-
-
-
-    @if($obj->getKey())
-        <livewire:admin.gallery-item-controller :model="$obj" />
-    @endif
+    </div>
 
 @endsection

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ConstantController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\SeoController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
