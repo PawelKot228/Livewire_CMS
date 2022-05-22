@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Vendor\RenderImage;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\TemporaryUploadedFile;
 use Storage;
-use Str;
 
 class GalleryItem extends Model
 {
@@ -16,6 +14,12 @@ class GalleryItem extends Model
     protected $casts = [
         'filename_rendered' => 'object',
     ];
+
+    public function getUrl()
+    {
+        return asset('upload/' . $this->filename);
+    }
+
 
     public function user()
     {

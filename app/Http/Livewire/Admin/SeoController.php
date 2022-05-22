@@ -48,13 +48,12 @@ class SeoController extends Component
         $form = new SeoForm();
 
         $data = $this->getData();
-
         $form->fillElements($data);
 
         $valid = $form->validate($data);
 
         if ($valid) {
-            $seo = Seo::getSeo($this->model) ?? new SeoController();
+            $seo = Seo::getSeo($this->model) ?? new Seo();
             $seo->fill($data)->save();
             $this->messages = ['success' => __('admin.toast.form.saved')];
             //dd('saved!!!');

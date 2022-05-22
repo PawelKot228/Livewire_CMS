@@ -12,7 +12,6 @@
                                     'exit' => route('admin.article-category.index'),
                                 ])
 
-
                 <div class="row">
                     <div class="col-md-6 col-xl-4">
                         <div class="card">
@@ -27,6 +26,14 @@
                     </div>
                     <div class="col-md-6 col-xl-4">
                         <livewire:admin.seo-controller :model="$obj" />
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                {!! $form->renderFormElement('article_category_text') !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

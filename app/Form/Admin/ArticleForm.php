@@ -45,8 +45,8 @@ class ArticleForm extends Form
 
         $this->append(new FormTextareaElement('article_text', [
             'label' => __('admin.label.text'),
-            'class' => 'form-control',
-            'validation' => 'max:512',
+            'class' => 'form-control ckeditor',
+            //'validation' => 'max:5120',
             'group' => 'formdata',
         ]));
 

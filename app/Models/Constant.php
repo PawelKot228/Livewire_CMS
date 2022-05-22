@@ -12,6 +12,6 @@ class Constant extends Model
 
     public static function getConstant($label)
     {
-        return self::where('constant_label', $label)->first() ?? '';
+        return optional(self::where('constant_label', $label)->first())->constant_text ?? '';
     }
 }

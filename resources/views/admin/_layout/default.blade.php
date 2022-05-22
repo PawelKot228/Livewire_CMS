@@ -156,6 +156,7 @@
 <script src="{{asset('admin/js/vendors/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('admin/js/vendors/adminlte.min.js')}}"></script>
 {{--<script src="http://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>--}}
+<script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 

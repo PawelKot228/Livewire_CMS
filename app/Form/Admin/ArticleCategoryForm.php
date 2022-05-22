@@ -33,7 +33,7 @@ class ArticleCategoryForm extends Form
         $this->append(new FormTextareaElement('article_category_text', [
             'label' => __('admin.label.text'),
             'class' => 'form-control',
-            'validation' => 'max:512',
+            //'validation' => 'max:512',
             'group' => 'formdata',
         ]));
 

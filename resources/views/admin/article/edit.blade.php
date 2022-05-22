@@ -22,13 +22,21 @@
                                 <hr>
                                 {!! $form->renderFormElement('article_title') !!}
                                 {!! $form->renderFormElement('article_lead') !!}
-                                {!! $form->renderFormElement('article_text') !!}
                                 {!! $form->renderFormElement('status') !!}
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-4">
                         <livewire:admin.seo-controller :model="$obj"/>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                {!! $form->renderFormElement('article_text') !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
