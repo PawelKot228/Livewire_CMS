@@ -163,7 +163,6 @@
 <script src="{{asset('admin/js/vendors/bootstrap4-toggle.min.js')}}"></script>
 <script src="{{asset('admin/js/main.js')}}"></script>
 
-@livewire('livewire-ui-modal')
 @livewireScripts
 @stack('js')
 
