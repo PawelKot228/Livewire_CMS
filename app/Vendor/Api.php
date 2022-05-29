@@ -7,8 +7,8 @@ use JetBrains\PhpStorm\ArrayShape;
 class Api
 {
     private string $status;
-    private string $message;
-    private array $data;
+    private string $message = '';
+    private array $data = [];
 
     private function __construct($status = 'error')
     {
