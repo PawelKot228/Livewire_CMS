@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\ArticleCategory;
 
 class ArticleController extends Controller
@@ -12,17 +13,44 @@ class ArticleController extends Controller
         $cats = ArticleCategory::with(['gallery'])
             ->where('status', 1)
             ->select(['id_article_category', 'article_category_title', 'article_category_lead'])
-            ->get();
+            ->get()
+            ->map(function (ArticleCategory $item) {
+                return [
+                    'id' => $item->id_article_category,
+                    'title' => $item->article_category_title,
+                    'lead' => $item->article_category_lead,
+                    'text' => $item->article_category_text,
+                    'cover' => optional($item->getCover())->getUrl() ?? '',
+                ];
+            })->toArray();
 
-
-        foreach ($cats as $cat) {
-            $cat->cover = optional($cat->getCover())->getUrl();
-            $cat->unsetRelations();
-        }
 
         return [
             'status' => 'OK',
-            'data' => $cats->toArray(),
+            'data' => $cats,
+        ];
+    }
+
+    public function getArticles($id = 0)
+    {
+        $articles = Article::with(['gallery'])
+            ->where('id_article_category', $id)
+            ->where('status', 1)
+            ->get()
+            ->map(function (Article $item) {
+                return [
+                    'id' => $item->id_article,
+                    'title' => $item->article_title,
+                    'lead' => $item->article_lead,
+                    'text' => $item->article_text,
+                    'cover' => optional($item->getCover())->getUrl() ?? '',
+                    'created_at' => $item->created_at->format('H:m d/m/Y'),
+                ];
+            })->toArray();
+
+        return [
+            'status' => 'OK',
+            'data' => $articles,
         ];
     }
 }

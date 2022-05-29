@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('api')->group(function (){
     Route::get('/article-category/get', [ArticleController::class, 'get']);
+    Route::get('/article-category/get-articles/{id?}', [ArticleController::class, 'getArticles']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
