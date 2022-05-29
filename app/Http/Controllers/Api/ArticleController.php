@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Vendor\Api;
 
 class ArticleController extends Controller
 {
@@ -24,11 +25,7 @@ class ArticleController extends Controller
                 ];
             })->toArray();
 
-
-        return [
-            'status' => 'OK',
-            'data' => $cats,
-        ];
+        return Api::success()->data($cats)->response();
     }
 
     public function getArticles($id = 0)
@@ -48,9 +45,6 @@ class ArticleController extends Controller
                 ];
             })->toArray();
 
-        return [
-            'status' => 'OK',
-            'data' => $articles,
-        ];
+        return Api::success()->data($articles)->response();
     }
 }
