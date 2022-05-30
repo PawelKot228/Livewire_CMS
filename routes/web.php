@@ -21,23 +21,27 @@ Route::name('web.')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
 
 
-    foreach (Seo::all() as $seo) {
-        switch ($seo->source_table) {
-            case 'article_category' :
-            {
-                Route::get($seo->slug, [ArticleCategoryController::class, 'index'])
-                    ->defaults('id', $seo->source_id)
-                    ->name("article-category.$seo->source_id");
-                break;
-            }
-            case 'article' :
-            {
-                Route::get($seo->slug, [ArticleController::class, 'index'])
-                    ->defaults('id', $seo->source_id)
-                    ->name("article.$seo->source_id");
-                break;
+    try {
+        foreach (Seo::all() as $seo) {
+            switch ($seo->source_table) {
+                case 'article_category' :
+                {
+                    Route::get($seo->slug, [ArticleCategoryController::class, 'index'])
+                        ->defaults('id', $seo->source_id)
+                        ->name("article-category.$seo->source_id");
+                    break;
+                }
+                case 'article' :
+                {
+                    Route::get($seo->slug, [ArticleController::class, 'index'])
+                        ->defaults('id', $seo->source_id)
+                        ->name("article.$seo->source_id");
+                    break;
+                }
             }
         }
+    } catch (Exception $e) {
+        dump("MISSING MIGRATIONS");
     }
 
 
