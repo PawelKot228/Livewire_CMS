@@ -29,7 +29,14 @@ class ConstantForm extends Form
 
         $this->append(new FormTextareaElement('company_description', [
             'label' => __('admin.label.company_description'),
-            'class' => 'form-control',
+            'class' => 'form-control ckeditor',
+            'validation' => 'max:512',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextareaElement('company_text', [
+            'label' => __('admin.label.company_text'),
+            'class' => 'form-control ckeditor',
             'validation' => 'max:512',
             'group' => 'formdata',
         ]));

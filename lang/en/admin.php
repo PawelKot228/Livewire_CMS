@@ -31,6 +31,7 @@ return [
         'company_name' => 'Company name',
         'company_address' => 'Company address',
         'company_description' => 'Company address',
+        'company_text' => 'Company text',
 
 
         'all' => 'All',

@@ -17,14 +17,13 @@ class ConstantController extends Controller
             $post = request()->get('formdata');
 
             if ($form->validate($post)){
-
                 foreach ($post as $key => $val){
                     $const = Constant::where('constant_label', $key)
                         ->first() ?? new Constant();
 
                     $const->fill([
                         'constant_label' => $key,
-                        'constant_text' => $val,
+                        'constant_text' => $val ?? '',
                         'lang' => app()->getLocale(),
                     ])->save();
                 }

@@ -9,15 +9,26 @@
 
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="card-title">Basic info</h2>
                             </div>
                             <div class="card-body">
-                                {!! $form->renderFormElement('company_name') !!}
-                                {!! $form->renderFormElement('company_address') !!}
-                                {!! $form->renderFormElement('company_description') !!}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {!! $form->renderFormElement('company_name') !!}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {!! $form->renderFormElement('company_address') !!}
+                                    </div>
+                                    <div class="col-12">
+                                        {!! $form->renderFormElement('company_description') !!}
+                                    </div>
+                                    <div class="col-12">
+                                        {!! $form->renderFormElement('company_text') !!}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
