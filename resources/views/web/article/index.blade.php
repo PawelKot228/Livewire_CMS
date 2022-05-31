@@ -11,7 +11,7 @@
     @include('web._layout.intro', [
         'title' => $article->article_title,
         'lead' => $article->article_lead,
-        'image' => $cover->getUrl() ?? '']
+        'image' => $article->getCoverUrl()]
     )
 
     <div class="container-article">

@@ -3,6 +3,7 @@
 @php
     /**
     * @var \App\Models\ArticleCategory $article_category
+    * @var \App\Models\Article $articles
     */
     $cover = $article_category->getCover();
 @endphp
@@ -18,11 +19,12 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 g-3">
-                @foreach($article_category->articles as $item)
+                @foreach($articles as $item)
                     <div class="col">
                         @include('web.article.item', ['item' => $item])
                     </div>
                 @endforeach
+                {!! $articles->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

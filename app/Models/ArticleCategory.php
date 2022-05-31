@@ -18,7 +18,7 @@ class ArticleCategory extends Model
     {
         return self::with(['gallery', 'seo'])
             ->where('status', 1)
-            ->get();
+            ->paginate(10);
     }
 
 

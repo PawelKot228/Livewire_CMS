@@ -17,7 +17,10 @@ class GalleryItem extends Model
 
     public function getUrl()
     {
-        return asset('upload/' . $this->filename);
+        if (Storage::disk('upload')->exists($this->filename)) {
+            return asset('upload/' . $this->filename);
+        }
+        return '';
     }
 
 
@@ -28,6 +31,7 @@ class GalleryItem extends Model
 
     /**
      * @param TemporaryUploadedFile $file
+     *
      * @return void
      */
     public function storeImage(TemporaryUploadedFile $file): void

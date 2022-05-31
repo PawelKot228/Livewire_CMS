@@ -36,10 +36,10 @@ class ArticleForm extends Form
             'group' => 'formdata',
         ]));
 
-        $this->append(new FormTextElement('article_lead', [
+        $this->append(new FormTextareaElement('article_lead', [
             'label' => __('admin.label.lead'),
             'class' => 'form-control',
-            'validation' => 'max:255',
+            'validation' => 'max:512',
             'group' => 'formdata',
         ]));
 
