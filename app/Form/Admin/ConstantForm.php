@@ -19,10 +19,45 @@ class ConstantForm extends Form
             'group' => 'formdata',
         ]));
 
-        $this->append(new FormTextElement('company_address', [
+        $this->append(new FormTextElement('company_phone', [
+            'label' => __('admin.label.company_phone'),
+            'class' => 'form-control',
+            'validation' => 'max:255',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextElement('company_email', [
+            'label' => __('admin.label.company_email'),
+            'class' => 'form-control',
+            'validation' => 'max:255',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextElement('company_facebook', [
+            'label' => __('admin.label.company_facebook'),
+            'class' => 'form-control',
+            'validation' => 'max:255',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextElement('company_twitter', [
+            'label' => __('admin.label.company_twitter'),
+            'class' => 'form-control',
+            'validation' => 'max:255',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextElement('company_linkedin', [
+            'label' => __('admin.label.company_linkedin'),
+            'class' => 'form-control',
+            'validation' => 'max:255',
+            'group' => 'formdata',
+        ]));
+
+        $this->append(new FormTextareaElement('company_address', [
             'label' => __('admin.label.company_address'),
             //'icon' => '<span class="fas fa-lock"></span>',
-            'class' => 'form-control',
+            'class' => 'form-control ckeditor',
             'validation' => 'max:255',
             'group' => 'formdata',
         ]));

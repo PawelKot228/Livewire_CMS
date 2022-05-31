@@ -41,7 +41,7 @@ Route::name('web.')->group(function () {
             }
         }
     } catch (Exception $e) {
-        dump("MISSING MIGRATIONS");
+        dump($e->getMessage());
     }
 
 

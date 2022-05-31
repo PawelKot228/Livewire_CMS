@@ -9,26 +9,39 @@
 
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-md-4">
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="card-title">Basic info</h2>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        {!! $form->renderFormElement('company_name') !!}
-                                    </div>
-                                    <div class="col-md-6">
-                                        {!! $form->renderFormElement('company_address') !!}
-                                    </div>
-                                    <div class="col-12">
-                                        {!! $form->renderFormElement('company_description') !!}
-                                    </div>
-                                    <div class="col-12">
-                                        {!! $form->renderFormElement('company_text') !!}
-                                    </div>
-                                </div>
+                                {!! $form->renderFormElement('company_name') !!}
+                                {!! $form->renderFormElement('company_phone') !!}
+                                {!! $form->renderFormElement('company_email') !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Socials</h2>
+                            </div>
+                            <div class="card-body">
+                                {!! $form->renderFormElement('company_twitter') !!}
+                                {!! $form->renderFormElement('company_facebook') !!}
+                                {!! $form->renderFormElement('company_linkedin') !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Additional text</h2>
+                            </div>
+                            <div class="card-body">
+                                {!! $form->renderFormElement('company_address') !!}
+                                {!! $form->renderFormElement('company_description') !!}
+                                {!! $form->renderFormElement('company_text') !!}
                             </div>
                         </div>
                     </div>

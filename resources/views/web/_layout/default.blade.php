@@ -28,15 +28,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    <div class="text-white-50">
+                        {!! Constant::getConstant('company_description') !!}
+                    </div>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                        <li><a href="#" class="text-white">Like on Facebook</a></li>
-                        <li><a href="#" class="text-white">Email me</a></li>
+                        <li><a href="{{Constant::getConstant('company_twitter')}}" class="text-white">Follow on Twitter</a></li>
+                        <li><a href="{{Constant::getConstant('company_facebook')}}" class="text-white">Like on Facebook</a></li>
+                        <li><a href="{{Constant::getConstant('company_linkedin')}}" class="text-white">Check our linkedin</a></li>
+                        <li><a href="mailto:{{Constant::getConstant('company_email')}}" class="text-white">Email me</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,11 +65,7 @@
 
 <footer class="text-muted py-5">
     <div class="container">
-        <p class="float-end mb-1">
-            <a href="#">Back to top</a>
-        </p>
-        <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.0/getting-started/introduction/">getting started guide</a>.</p>
+        {!! Constant::getConstant('company_address') !!}
     </div>
 </footer>
 

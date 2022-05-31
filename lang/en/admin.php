@@ -29,8 +29,13 @@ return [
         'password' => 'Password',
         'reset-password' => 'Reset password',
         'company_name' => 'Company name',
+        'company_email' => 'Company email',
+        'company_phone' => 'Company phone',
+        'company_facebook' => 'Company facebook',
+        'company_linkedin' => 'Company linkedin',
+        'company_twitter' => 'Company twitter',
         'company_address' => 'Company address',
-        'company_description' => 'Company address',
+        'company_description' => 'Company description',
         'company_text' => 'Company text',
 
 
